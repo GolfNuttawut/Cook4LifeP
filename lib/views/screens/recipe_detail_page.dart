@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hungry/models/core/recipe.dart';
-import 'package:hungry/views/screens/full_screen_image.dart';
-import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/ingridient_tile.dart';
-import 'package:hungry/views/widgets/review_tile.dart';
-import 'package:hungry/views/widgets/step_tile.dart';
+import 'package:cook4life/models/core/recipe.dart';
+import 'package:cook4life/views/screens/full_screen_image.dart';
+import 'package:cook4life/views/utils/AppColor.dart';
+import 'package:cook4life/views/widgets/ingridient_tile.dart';
+import 'package:cook4life/views/widgets/review_tile.dart';
+import 'package:cook4life/views/widgets/step_tile.dart';
 
 class RecipeDetailPage extends StatefulWidget {
   final Recipe data;
-  RecipeDetailPage({@required this.data});
+  RecipeDetailPage({/*@*/ required this.data});
 
   @override
   _RecipeDetailPageState createState() => _RecipeDetailPageState();
 }
 
-class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProviderStateMixin {
-  TabController _tabController;
-  ScrollController _scrollController;
+class _RecipeDetailPageState extends State<RecipeDetailPage>
+    with TickerProviderStateMixin {
+  /*add late*/ late TabController _tabController;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
@@ -70,11 +71,15 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
           color: appBarColor,
           duration: Duration(milliseconds: 200),
           child: AppBar(
+            //brightness: Brightness.dark,
             backgroundColor: Colors.transparent,
-            brightness: Brightness.dark,
             elevation: 0,
             centerTitle: true,
-            title: Text('Search Recipe', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w400, fontSize: 16)),
+            title: Text('Search Recipe',
+                style: TextStyle(
+                    fontFamily: 'inter',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16)),
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios, color: Colors.white),
               onPressed: () {
@@ -82,8 +87,12 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
               },
             ),
             actions: [
-              IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/icons/bookmark.svg', color: Colors.white)),
+              IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset('assets/icons/bookmark.svg',
+                      color: Colors.white)),
             ],
+            systemOverlayStyle: SystemUiOverlayStyle.light,
           ),
         ),
       ),
@@ -120,7 +129,8 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
                               },
                               child: Text('cancel'),
                               style: TextButton.styleFrom(
-                                primary: Colors.grey[600],
+                                //b4 primary: Colors.grey[600],
+                                foregroundColor: Colors.grey[600],
                               ),
                             ),
                           ),
@@ -130,7 +140,8 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
                                 onPressed: () {},
                                 child: Text('Post Review'),
                                 style: ElevatedButton.styleFrom(
-                                  primary: AppColor.primary,
+                                  //b4 primary: Colors.grey[600],
+                                  backgroundColor: AppColor.primary,
                                 ),
                               ),
                             ),
@@ -154,12 +165,17 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
           // Section 1 - Recipe Image
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FullScreenImage(image: Image.asset(widget.data.photo, fit: BoxFit.cover))));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => FullScreenImage(
+                      image:
+                          Image.asset(widget.data.photo, fit: BoxFit.cover))));
             },
             child: Container(
               height: 280,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(image: DecorationImage(image: AssetImage(widget.data.photo), fit: BoxFit.cover)),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(widget.data.photo), fit: BoxFit.cover)),
               child: Container(
                 decoration: BoxDecoration(gradient: AppColor.linearBlackTop),
                 height: 280,
@@ -208,13 +224,20 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
                   margin: EdgeInsets.only(bottom: 12, top: 16),
                   child: Text(
                     widget.data.title,
-                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600, fontFamily: 'inter'),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'inter'),
                   ),
                 ),
                 // Recipe Description
                 Text(
                   widget.data.description,
-                  style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 14, height: 150 / 100),
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.9),
+                      fontSize: 14,
+                      height: 150 / 100),
                 ),
               ],
             ),
@@ -233,7 +256,8 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
               },
               labelColor: Colors.black,
               unselectedLabelColor: Colors.black.withOpacity(0.6),
-              labelStyle: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w500),
+              labelStyle:
+                  TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w500),
               indicatorColor: Colors.black,
               tabs: [
                 Tab(
@@ -256,11 +280,11 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> with TickerProvider
               ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
-                itemCount: widget.data.ingridients.length,
+                itemCount: widget.data.ingredients.length,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return IngridientTile(
-                    data: widget.data.ingridients[index],
+                  return IngredientTile(
+                    data: widget.data.ingredients[index],
                   );
                 },
               ),

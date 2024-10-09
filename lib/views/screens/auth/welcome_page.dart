@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hungry/views/utils/AppColor.dart';
-import 'package:hungry/views/widgets/modals/login_modal.dart';
-import 'package:hungry/views/widgets/modals/register_modal.dart';
+import 'package:cook4life/views/utils/AppColor.dart';
+import 'package:cook4life/views/widgets/modals/login_modal.dart';
+import 'package:cook4life/views/widgets/modals/register_modal.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -13,7 +13,10 @@ class WelcomePage extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/bg.jpg'), fit: BoxFit.cover)),
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/bg.jpg'),
+                    fit: BoxFit.cover)),
           ),
           Positioned(
             bottom: 0,
@@ -31,9 +34,15 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 16),
-                        child: Text('Hungry?', style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700, fontSize: 32, color: Colors.white)),
+                        child: Text('cook4life?',
+                            style: TextStyle(
+                                fontFamily: 'inter',
+                                fontWeight: FontWeight.w700,
+                                fontSize: 32,
+                                color: Colors.white)),
                       ),
-                      Text("Help you when you're hungry", style: TextStyle(color: Colors.white)),
+                      Text("Help you when you're cook4life",
+                          style: TextStyle(color: Colors.white)),
                     ],
                   ),
                   Column(
@@ -45,12 +54,20 @@ class WelcomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 60,
                         child: ElevatedButton(
-                          child: Text('Get Started', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
+                          child: Text('Get Started',
+                              style: TextStyle(
+                                  color: AppColor.secondary,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'inter')),
                           onPressed: () {
                             showModalBottomSheet(
                               context: context,
                               backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20))),
                               isScrollControlled: true,
                               builder: (context) {
                                 return RegisterModal();
@@ -58,8 +75,10 @@ class WelcomePage extends StatelessWidget {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            primary: AppColor.primarySoft,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            backgroundColor: AppColor
+                                .primarySoft, /*primary: AppColor.primarySoft,*/
                           ),
                         ),
                       ),
@@ -69,12 +88,20 @@ class WelcomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 60,
                         child: OutlinedButton(
-                          child: Text('Log in', style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'inter')),
+                          child: Text('Log in',
+                              style: TextStyle(
+                                  color: AppColor.secondary,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'inter')),
                           onPressed: () {
                             showModalBottomSheet(
                               context: context,
                               backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20))),
                               isScrollControlled: true,
                               builder: (context) {
                                 return LoginModal();
@@ -82,9 +109,13 @@ class WelcomePage extends StatelessWidget {
                             );
                           },
                           style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            side: BorderSide(color: AppColor.secondary.withOpacity(0.5), width: 1),
-                            primary: Colors.white,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            side: BorderSide(
+                                color: AppColor.secondary.withOpacity(0.5),
+                                width: 1),
+                            //primary: Colors.white,
                           ),
                         ),
                       ),
@@ -94,20 +125,30 @@ class WelcomePage extends StatelessWidget {
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                            text: 'By joining Hungry, you agree to our ',
-                            style: TextStyle(color: Colors.white.withOpacity(0.6), height: 150 / 100),
+                            text: 'By joining cook4life, you agree to our ',
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.6),
+                                height: 150 / 100),
                             children: [
                               TextSpan(
                                 text: 'Terms of service ',
-                                style: TextStyle(color: Colors.white.withOpacity(0.6), fontWeight: FontWeight.w700, height: 150 / 100),
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontWeight: FontWeight.w700,
+                                    height: 150 / 100),
                               ),
                               TextSpan(
                                 text: 'and ',
-                                style: TextStyle(color: Colors.white.withOpacity(0.6), height: 150 / 100),
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    height: 150 / 100),
                               ),
                               TextSpan(
                                 text: 'Privacy policy.',
-                                style: TextStyle(color: Colors.white.withOpacity(0.6), fontWeight: FontWeight.w700, height: 150 / 100),
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontWeight: FontWeight.w700,
+                                    height: 150 / 100),
                               ),
                             ],
                           ),

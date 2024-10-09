@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:hungry/views/utils/AppColor.dart';
+import 'package:cook4life/views/utils/AppColor.dart';
 
 class CustomTextField extends StatelessWidget {
   final String title;
   final String hint;
-  final TextEditingController controller;
+  //final TextEditingController controller;
   final bool obsecureText;
-  final EdgeInsetsGeometry padding;
+  //final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
 
   CustomTextField({
-    @required this.title,
-    @required this.hint,
-    this.controller,
+    /*@*/ required this.title,
+    /*@*/ required this.hint,
+    //required this.controller,
     this.obsecureText = false,
-    this.padding,
-    this.margin,
+    //required this.padding,
+    this.margin = EdgeInsets.zero,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding,
+      //padding: padding,
       margin: margin,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -38,9 +38,11 @@ class CustomTextField extends StatelessWidget {
             margin: EdgeInsets.only(top: 8),
             width: MediaQuery.of(context).size.width,
             height: 50,
-            decoration: BoxDecoration(color: AppColor.primaryExtraSoft, borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+                color: AppColor.primaryExtraSoft,
+                borderRadius: BorderRadius.circular(10)),
             child: TextField(
-              controller: controller,
+              //controller: controller,
               style: TextStyle(fontSize: 14),
               cursorColor: AppColor.primary,
               obscureText: obsecureText,
